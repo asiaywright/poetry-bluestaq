@@ -1,0 +1,20 @@
+<div class="display-title-container">
+  <!-- Back Button -->
+  <button class="button" (click)="backToAuthors()">← View Authors</button>
+
+  <!-- Titles Section -->
+  <div *ngIf="titles?.length">
+    <h3>{{ selectedAuthor }}'s Poems</h3>
+
+
+    <!-- list all titles -->
+    <div class="poem-grid">
+      <div class="poem-card" *ngFor="let title of titles">
+        {{ title.title }}
+      </div>
+    </div>
+  </div>
+
+  <!-- default view if no titles are returned -->
+  <p *ngIf="titles && titles.length === 0">No poems found for this author.</p>
+</div>

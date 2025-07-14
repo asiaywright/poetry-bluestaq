@@ -1,0 +1,47 @@
+<div class="poem-container" *ngIf="!authorPressed; else showTitles">
+  <h2>Select a Poet</h2>
+
+  <!-- View Author button appears if the user has searched for an author-->
+
+   <diV *ngIf="searchPressed>0" class="view-all-authors">
+    <button class="button" (click)="allAuthors()">← View Authors</button>
+  </diV>
+
+  <!-- Search Bar -->
+  <div class="search-section">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Search for a poet..."
+      class="search-input"
+    />
+    <button class="button" (click)="searchAuthors()">Search</button>
+   
+  </div>
+  
+<!-- display list of authors retrived-->
+
+  <div *ngIf="filteredAuthors.length > 0; else noResults" class="author-list">
+    <button
+      *ngFor="let author of filteredAuthors"
+      class="author-button"
+      (click)="authorSelected(author)">
+      {{ author }}
+    </button>
+  </div>
+</div>
+
+<!-- Direct user to display title component when author is selected -->
+<ng-template #showTitles>
+  <app-display-title
+    [selectedAuthor]="selectedAuthor"
+    (backBtn)="handleViewAuthorsBtn()">
+  </app-display-title>
+</ng-template>
+
+<!-- Default view if no authors are retrived  -->
+<ng-template #noResults>
+  <p class="no-results">No authors found.</p>
+</ng-template>
+
+
