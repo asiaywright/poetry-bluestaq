@@ -26,3 +26,32 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 # poetry-bluestaq
+
+An Angular web application that allows users to search poets and explore their poem titles using the PoetryDB API. Built as part of a technical coding challenge.
+
+Features 
+
+Search Authors – Search through a list of authors retrieved from the API.
+
+Select Author – View poem titles written by a selected author.
+
+Display Titles – Browse all poem titles available for a given poet.
+
+Back Navigation – Return to author search from the title view.
+
+Error Handling – API errors are gracefully logged and handled.
+
+Key Files
+display-author.component.ts
+Loads authors on ngOnInit
+Handles author search, filtering, and selection
+
+display-title.component.ts
+Receives selected author as input
+Fetches poem titles via service
+
+poetry-service.service.ts
+Fetches data from PoetryDB API
+Handles errors using RxJS catchError
+
+
